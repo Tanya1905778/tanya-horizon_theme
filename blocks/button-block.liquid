@@ -1,0 +1,32 @@
+ 
+
+<a
+  href="{{ block.settings.button_link }}"
+  class="banner-button"
+ 
+>
+  {{ block.settings.button_text }}
+</a>
+
+{% schema %}
+{
+  "name": "Button",
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Click me"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+
+  ],
+  "presets": [{"name": "button block"}]
+}
+{% endschema %}

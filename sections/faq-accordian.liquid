@@ -1,0 +1,102 @@
+<section class="faq-section">
+  <div class="faq-wrapper">
+
+    <h2 class="faq-heading">
+      {{ section.settings.heading }}
+    </h2>
+
+    <div class="faq-list">
+        {%- content_for 'blocks' -%}
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ Accordion",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    }
+  ],
+  "blocks": [
+    {
+        "type": "@theme"
+    },
+    // {
+    //   "type": "faq-item"
+    // }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Accordion"
+    }
+  ]
+}
+{% endschema %}
+<style>
+    .faq-wrapper {
+  max-width: 800px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+.faq-heading {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.faq-item {
+  border-bottom: 1px solid #ddd;
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 20px 20px;
+  color: #555;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(45deg);
+}
+
+</style>
+<script>
+    document.addEventListener("click", function (e) {
+  const button = e.target.closest(".faq-question");
+  if (!button) return;
+
+  const item = button.closest(".faq-item");
+  const allItems = document.querySelectorAll(".faq-item");
+
+  allItems.forEach(faq => {
+    if (faq !== item) faq.classList.remove("active");
+  });
+
+  item.classList.toggle("active");
+});
+
+</script>

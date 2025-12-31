@@ -1,0 +1,37 @@
+<div
+  class="block-heading"
+  
+>
+  {{ block.settings.heading_text }}
+</div>
+
+
+<style>
+   .block-heading {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin: 20px 0;
+}
+
+</style>
+{% schema %}
+{
+    "name": "Heading",
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading_text",
+            "label": "Heading Text",
+            "default": "Your Heading Here"
+        }
+        
+        ],
+    "blocks": [],
+    "presets": [
+        {
+            "name": "Heading_block"
+        }
+    ]
+}
+{% endschema %}

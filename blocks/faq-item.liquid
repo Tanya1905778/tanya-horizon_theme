@@ -1,0 +1,88 @@
+<div
+  class="faq-item"
+  
+>
+  <button type="button" class="faq-question">
+    {{ block.settings.question }}
+    <span class="faq-icon">+</span>
+  </button>
+
+  <div class="faq-answer">
+    {{ block.settings.answer }}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ Item",
+  "settings": [
+    {
+      "type": "text",
+      "id": "question",
+      "label": "Question",
+      "default": "What is your return policy?"
+    },
+    {
+      "type": "richtext",
+      "id": "answer",
+      "label": "Answer",
+      "default": "<p>You can return items within 30 days.</p>"
+    }
+  ],
+    "blocks": [],
+    "presets": [
+        {
+        "name": "FAQ Item"
+        }
+]
+}
+{% endschema %}
+<style>
+    /* FAQ item container */
+.faq-item {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0;
+}
+
+/* Question button */
+.faq-question {
+  width: 100%;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  color: #111;
+}
+
+/* Icon */
+.faq-icon {
+  font-size: 24px;
+  font-weight: 400;
+  transition: transform 0.3s ease;
+}
+
+/* Answer */
+.faq-answer {
+  display: none;
+  padding: 0 20px 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Open state */
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(45deg);
+}
+
+</style>
